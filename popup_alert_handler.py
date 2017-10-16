@@ -7,7 +7,8 @@ import time
 browser = webdriver.Firefox(executable_path=r'C:\Users\geckodriver.exe')  # Get local session of firefox
 browser.get("https://www.baidu.com/")
 shezhi = browser.find_element_by_xpath('/html/body/div[1]/div[1]/div/div[3]/a[8]')
-browser.implicitly_wait(5)
+#browser.implicitly_wait(5)
+time.sleep(5)
 webdriver.ActionChains(browser).move_to_element(shezhi).perform()
 sousuo = browser.find_element_by_css_selector('.setpref')
 browser.implicitly_wait(5)
@@ -15,5 +16,9 @@ sousuo.click()
 baocunshezhi = browser.find_element_by_css_selector('.prefpanelgo')
 time.sleep(5)
 baocunshezhi.click()
-browser.switch_to_alert().accept()
+#print browser.switch_to_alert().getText()
+browser.switch_to_alert().accept()                       #Confirm
+#browser.switch_to_alert().dismiss()                    #Cancel
+
 browser.quit()
+
